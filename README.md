@@ -1,10 +1,6 @@
 # FS-App-Template
 
 
-//KYLE PARKINSON
-
-#Fei-branch-test
-
 
 ## Setup
 
