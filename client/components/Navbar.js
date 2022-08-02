@@ -2,14 +2,16 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import Header from './Header'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    <h1>FS-App-Template</h1>
+   
     <nav>
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
+          <Header />
           <Link to="/home">Home</Link>
           <a href="#" onClick={handleClick}>
             Logout
