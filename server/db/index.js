@@ -10,6 +10,8 @@ const Veggie = require('./models/Veggie')
 
 //associations could go here!
 
+
+
 module.exports = {
   db,
   models: {
