@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 
-const Veggie = db.define("veggie", {
+const Product = db.define("product", {
   name: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -13,12 +13,11 @@ const Veggie = db.define("veggie", {
     type: Sequelize.TEXT,
     allowNull: false,
     defaultValue:
-      "https://i.pinimg.com/736x/9f/03/12/9f0312e04e5cb062a19d0adfda5b683f.jpg",
+      "https://cdn1.sph.harvard.edu/wp-content/uploads/sites/30/2012/09/vegetables-and-fruits-farmers-market.jpg",
   },
   description: {
     type: Sequelize.TEXT,
     allowNull: false,
-    defaultValue: 'healthy && fresh veggie'
   },
   quantity: {
     type: Sequelize.INTEGER,
@@ -28,20 +27,20 @@ const Veggie = db.define("veggie", {
       max: 100,
     },
   },
-  price: {
-    type: Sequelize.FLOAT,
+  unitPrice: {
+    type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
       isDecimal: true,
-      min: 0.0,
+      min: 0,
       max: 1000,
     },
   },
-  inSeason: {
-    type: Sequelize.ENUM("YES", "NO"),
-    defaultValue: "YES",
+  fruitOrVeggie: {
+    type: Sequelize.ENUM("FRUIT", "VEGGIE"),
+    defaultValue: "FRUIT",
     allowNull: false,
   },
 });
 
-module.exports = Veggie;
+module.exports = Product;
