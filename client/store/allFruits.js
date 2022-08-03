@@ -1,15 +1,18 @@
 import axios from "axios";
+import history from "../history";
 
 const SET_ALLFRUITS = "SET_ALLFRUITS";
 
-export const AllFruits = (AllFruits) => ({
+export const setFruits = (AllFruits) => ({
   type: SET_ALLFRUITS,
   AllFruits,
 });
 
-export const fetchAllFruits = () => async (dispatch) => {
-  const { data } = await axios.get("/api/AllFruits");
-  dispatch(AllFruits(data));
+export const fetchAllFruits = () => {
+  return async (dispatch) => {
+    const { data } = await axios.get("/api/fruits");
+    dispatch(setFruits(data));
+  };
 };
 
 export default function AllFruitsReducer(state = [], action) {

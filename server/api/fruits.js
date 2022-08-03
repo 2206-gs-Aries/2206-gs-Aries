@@ -1,11 +1,13 @@
 const router = require("express").Router();
-const { Fruit } = require("../db");
+const {
+  models: { Fruit, Veggie },
+} = require("../db");
 
 router.get("/", async (req, res, next) => {
   try {
     const fruit = await Fruit.findAll();
 
-    res.json(fruit);
+    res.send(fruit);
   } catch (error) {
     next(error);
   }

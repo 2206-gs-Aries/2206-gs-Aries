@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { allFruits } from "./store/reducers/allFruits";
-import { Link } from "react-router-dom";
+
+import { fetchAllFruits } from "../store/allFruits";
 
 export class AllFruits extends React.Component {
   componentDidMount() {
@@ -9,35 +9,32 @@ export class AllFruits extends React.Component {
   }
 
   render() {
-    const { allfruits } = this.props;
-
     return (
       <div>
-        <div className="fruits">
-          {allfruits.length ? (
-            allfruits.map((fruit) => {
-              return (
-                <div key={fruit.id}>
-                  <h2 style={divStyle}></h2>
-                  <img src={fruit.imageUrl} />
-                </div>
-              );
-            })
-          ) : (
-            <h3>"*** renders No fruit"</h3>
-          )}
-        </div>
+        {this.props.allFruits.map((fruit) => (
+          <tr key={fruit.id}>
+            <td>{fruit.name}</td>
+            <td>{fruit.price}</td>
+            <td>
+              <img src={fruit.imageUrl} />
+            </td>
+          </tr>
+        ))}
       </div>
     );
   }
 }
 
-const mapState = (state) => ({
-  fruits: state.fruits,
-});
+const mapState = (state) => {
+  return {
+    fruits: state.fruit,
+  };
+};
 
-const mapDispatch = (dispatch) => ({
-  getAllFruits: () => dispatch(fetchAllFruits()),
-});
+const mapDispatch = (dispatch) => {
+  return {
+    getAllFruits: () => dispatch(fetchAllFruits()),
+  };
+};
 
 export default connect(mapState, mapDispatch)(AllFruits);
