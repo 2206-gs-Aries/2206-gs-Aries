@@ -1,20 +1,21 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Header from './Header'
-import AllFruit from './AllFruit'
+import AllProduct from './AllProduct'
+
 
 /**
  * COMPONENT
  */
-export const Home = props => {
+export const Home = (props, isLoggedIn) => {
   const {username} = props
 
   return (
     <div> 
-    
-      <h3>Welcome, {username}</h3>
-      <AllFruit />
+
+    <AllProduct />
     </div>
+    
   )
 }
 
@@ -23,8 +24,12 @@ export const Home = props => {
  */
 const mapState = state => {
   return {
-    username: state.auth.username
+    username: state.auth.username,
+    isLoggedIn: !!state.auth.id
   }
 }
 
 export default connect(mapState)(Home)
+
+
+

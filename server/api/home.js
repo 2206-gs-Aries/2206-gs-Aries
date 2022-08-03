@@ -5,7 +5,8 @@ module.exports = router
 router.get('/', async (req, res, next) => {
   try {
     const fruits = await Fruit.findAll()
-    res.send(fruits)
+    const veggies = await Veggie.findAll()
+    res.send({fruits, veggies})
   } catch (err) {
     next(err)
   }

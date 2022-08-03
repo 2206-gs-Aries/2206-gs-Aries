@@ -1,5 +1,5 @@
 import axios from 'axios'
-import history from '../history'
+
 
 const SET_FRUIT = 'SET_FRUIT'
 
@@ -18,8 +18,9 @@ export const setFruit = (fruit) => ({
 
 export const fetchFruit = () => {
     return async (dispatch) => {
-        const { data } = await axios.get('/api/home')
-        dispatch(setFruit(data))
+        const { data: fruit } = await axios.get('/api/home')
+        
+        dispatch(setFruit(fruit.fruits))
     }
 }
 

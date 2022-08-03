@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
+import {logout} from '../store'
 
 function Header (props) {
     return (
@@ -25,16 +26,17 @@ function Header (props) {
                     <span className="header_optionLineTwo">& Order</span> 
                 </div>
 
-                <div className="header_option">
+                {/* <div className="header_option">
                     <span className="header_optionLineOne">Your</span> 
                     <span className="header_optionLineTwo">Prime</span> 
-                </div>
+                </div> */}
                 
                 <div className="header_optionBasket">
                     <ShoppingCartIcon />
                     <span className="header_optionLineTwo header_backetCount">0</span> 
                 </div>
 
+                <button href="#" onClick={props.handleClick} >Logout</button>
             </div>
         </div>
     )
@@ -42,9 +44,18 @@ function Header (props) {
 
 const mapState = state => {
   return {
-    username: state.auth.username
+    username: state.auth.username,
+    isLoggedIn: !!state.auth.id
   }
 }
 
-export default connect(mapState)(Header)
+const mapDispatch = dispatch => {
+    return {
+      handleClick() {
+        dispatch(logout())
+      }
+    }
+  }
+
+export default connect(mapState, mapDispatch)(Header)
 
