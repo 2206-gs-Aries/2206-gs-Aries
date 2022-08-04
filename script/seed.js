@@ -1,6 +1,71 @@
-"use strict";
+'use strict'
 
-const { db, User, Product } = require("../server/db");
+const {db, models: {User, Product, Cart} } = require('../server/db')
+
+// const fruits = [
+//   {
+//     name: "Apple",
+//     imageUrl:
+//       "https://www.applesfromny.com/wp-content/uploads/2020/05/Jonagold_NYAS-Apples2.png",
+//     description:
+//       "The fruit is a fleshy drupe (stone fruit) that is generally heart-shaped to nearly globular, measures about 2 cm (1 inch) in diameter, and varies in colour from yellow through red to nearly black.",
+//     quantity: 50,
+//     price: 0.99,
+ 
+//   },
+//   {
+//     name: "Strawberry",
+//     imageUrl:
+//       "https://www.gardeningknowhow.com/wp-content/uploads/2021/07/strawberry.jpg",
+//     description:
+//       "Strawberries are soft, sweet, bright red berries. They're also delicious. Strawberries have tiny edible seeds, which grow all over their surface. When ripe, strawberries smell wonderful and taste even better. You can make jam, pie, strawberry shortcake, and more with strawberries.",
+//     quantity: 30,
+//     price: 1.5,
+ 
+//   },
+//   {
+//     name: "Banana",
+
+//     description:
+//       "A banana is a curved, yellow fruit with a thick skin and soft sweet flesh. If you eat a banana every day for breakfast, your roommate might nickname you 'the monkey.' A banana is a tropical fruit that's quite popular all over the world. It grows in bunches on a banana tree.",
+//     quantity: 25,
+//     price: 0.5,
+//     inSeason: "NO"
+//   },
+// ];
+// const veggies = [
+//   {
+//     name: "Broccoli",
+//     imageUrl:
+//       "https://domf5oio6qrcr.cloudfront.net/medialibrary/5390/h1218g16207258089583.jpg",
+//     description:
+//       "Broccoli, Brassica oleracea, is an herbaceous annual or biennial grown for its edible flower heads which are used as a vegetable. The broccoli plant has a thick green stalk, or stem, which gives rise to thick, leathery, oblong leaves which are gray-blue to green in color.",
+//     quantity: 40,
+//     price: 1.25,
+ 
+//   },
+//   {
+//     name: "Cucumber",
+//     imageUrl:
+//       "https://www.plantgrower.org/uploads/6/5/5/4/65545169/published/cucumber-slices.jpg?1516496438",
+//     description:
+//       "Cucumber is a summer vegetable, with elongate shape and 15cm long. Its skin is of a green colour, turning into yellow in maturation. At present, it is found in the European markets all over the year. Fresh or pickled cucumbers are also available.",
+//     quantity: 42,
+//     price: 0.75,
+  
+//   },
+//   {
+//     name: "Kale",
+//     imageUrl: "https://specialtyproduce.com/sppics/7631.png",
+  
+//     quantity: 15,
+//     price: 0.5,
+ 
+//   },
+// ];
+
+
+
 
 const products = [
   {
@@ -9,9 +74,9 @@ const products = [
       "https://www.applesfromny.com/wp-content/uploads/2020/05/Jonagold_NYAS-Apples2.png",
     description:
       "The fruit is a fleshy drupe (stone fruit) that is generally heart-shaped to nearly globular, measures about 2 cm (1 inch) in diameter, and varies in colour from yellow through red to nearly black.",
-    quantity: 50,
-    unitPrice: 1,
-    fruitOrVeggie: "FRUIT",
+      quantity: 50,
+      price: 0.99,
+    fruitOrVeggie: "fruit"
   },
   {
     name: "Strawberry",
@@ -20,17 +85,17 @@ const products = [
     description:
       "Strawberries are soft, sweet, bright red berries. They're also delicious. Strawberries have tiny edible seeds, which grow all over their surface. When ripe, strawberries smell wonderful and taste even better. You can make jam, pie, strawberry shortcake, and more with strawberries.",
     quantity: 30,
-    unitPrice: 1,
-    fruitOrVeggie: "FRUIT",
+    price: 1.5,
+    fruitOrVeggie: "fruit"
   },
   {
     name: "Banana",
-    imageUrl: "https://images.heb.com/is/image/HEBGrocery/000377497",
+
     description:
       "A banana is a curved, yellow fruit with a thick skin and soft sweet flesh. If you eat a banana every day for breakfast, your roommate might nickname you 'the monkey.' A banana is a tropical fruit that's quite popular all over the world. It grows in bunches on a banana tree.",
     quantity: 25,
-    unitPrice: 1,
-    fruitOrVeggie: "FRUIT",
+    price: 0.5,
+    fruitOrVeggie: "fruit"
   },
   {
     name: "Broccoli",
@@ -39,8 +104,8 @@ const products = [
     description:
       "Broccoli, Brassica oleracea, is an herbaceous annual or biennial grown for its edible flower heads which are used as a vegetable. The broccoli plant has a thick green stalk, or stem, which gives rise to thick, leathery, oblong leaves which are gray-blue to green in color.",
     quantity: 40,
-    unitPrice: 1,
-    fruitOrVeggie: "VEGGIE",
+    price: 1.25,
+    fruitOrVeggie: "veggie"
   },
   {
     name: "Cucumber",
@@ -49,17 +114,16 @@ const products = [
     description:
       "Cucumber is a summer vegetable, with elongate shape and 15cm long. Its skin is of a green colour, turning into yellow in maturation. At present, it is found in the European markets all over the year. Fresh or pickled cucumbers are also available.",
     quantity: 42,
-    unitPrice: 1,
-    fruitOrVeggie: "VEGGIE",
+    price: 0.75,
+    fruitOrVeggie: "veggie"
   },
   {
     name: "Kale",
     imageUrl: "https://specialtyproduce.com/sppics/7631.png",
-    description:
-      "Kale plants produce a rosette of elongated leaves with wavy to frilled margins. The leaves are typically blue-green in colour but can also be light green, red, or purple, depending on the variety. In a long growing season the main stem reaches a height of 60 cm (24 inches) or more.",
+  
     quantity: 15,
-    unitPrice: 1,
-    fruitOrVeggie: "VEGGIE",
+    price: 0.5,
+    fruitOrVeggie: "veggie"
   },
 ];
 /**
@@ -67,34 +131,47 @@ const products = [
  *      match the models, and populates the database.
  */
 async function seed() {
-  await db.sync({ force: true }); // clears db and matches models to tables
-  console.log("db synced!");
+  await db.sync({ force: true }) // clears db and matches models to tables
+  console.log('db synced!')
 
   // Creating Users
   const users = await Promise.all([
-    User.create({ username: "cody", password: "123" }),
-    User.create({ username: "murphy", password: "123" }),
-  ]);
+    User.create({ username: 'cody', password: '123' }),
+    User.create({ username: 'murphy', password: '123' }),
+  ])
 
   // const fruits = await Promise.all([
   //   Fruit.create({ name: 'apple',  description: 'good', quantity: 1, price: 0.99, }),
-
+   
   // ])
+  // await Promise.all(
+  //   fruits.map((fruit) => {
+  //     return Fruit.create(fruit)
+  //   })
+  // )
+
   await Promise.all(
-    products.map((product) => {
-      return Product.create(product);
+    products.map((veggie) => {
+      return Cart.create(veggie)
     })
-  );
+  )
 
-  console.log(`seeded ${users.length} users`);
-  console.log(`seeded successfully`);
+  await Promise.all(
+    products.map((veggie) => {
+      return Product.create(veggie)
+    })
+  )
 
+
+
+  console.log(`seeded ${users.length} users`)
+  console.log(`seeded successfully`)
   return {
     users: {
       cody: users[0],
-      murphy: users[1],
-    },
-  };
+      murphy: users[1]
+    }
+  }
 }
 
 /*
@@ -103,16 +180,16 @@ async function seed() {
  The `seed` function is concerned only with modifying the database.
 */
 async function runSeed() {
-  console.log("seeding...");
+  console.log('seeding...')
   try {
-    await seed();
+    await seed()
   } catch (err) {
-    console.error(err);
-    process.exitCode = 1;
+    console.error(err)
+    process.exitCode = 1
   } finally {
-    console.log("closing db connection");
-    await db.close();
-    console.log("db connection closed");
+    console.log('closing db connection')
+    await db.close()
+    console.log('db connection closed')
   }
 }
 
@@ -122,8 +199,8 @@ async function runSeed() {
   any errors that might occur inside of `seed`.
 */
 if (module === require.main) {
-  runSeed();
+  runSeed()
 }
 
 // we export the seed function for testing purposes (see `./seed.spec.js`)
-module.exports = seed;
+module.exports = seed
