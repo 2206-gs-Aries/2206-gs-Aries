@@ -1,53 +1,44 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchFruit } from "../store/fruit";
-import { fetchVeggie } from "../store/veggie";
+import { fetchProduct } from "../store/product";
+import SingleProduct from './SingleProduct'
 
-export class AllFruit extends React.Component {
+
+export class AllProduct extends React.Component {
     componentDidMount() {
-        this.props.getFruit()
-        this.props.getVeggie()
+        this.props.getProduct()
     }
     render() {
         return (
-            <div>
+        <div className="home">
+            <div className="home_container">  
+                
+                <h1>Welcome</h1>
+           
+
                 <div>
-                    {this.props.fruits.map((fruit) => (
-                        <tr key = { fruit.id }>
-                            <td>{ fruit.name }</td>
-                            <td>{ fruit.price }</td>
-                            <td><img src={ fruit.imageUrl } /></td>
-                        </tr>
+                    {this.props.products.map((product) => (
+                        <SingleProduct { ...product } key={ product.id }/>
                     ))}
                 </div>
-                <div>
-                    {this.props.veggies.map((veggie) => (
-                        <tr key = { veggie.id }>
-                            <td>{ veggie.name }</td>
-                            <td>{ veggie.price }</td>
-                            <td><img src={ veggie.imageUrl } /></td>
-                        </tr>
-                    ))}
-                </div>
+
             </div>
+        </div>
         )
     }
 }
 
-
 const mapState = (start) => {
     return {
-        fruits: start.fruit,
-        veggies: start.veggie,
+        products: start.product,
     };
   };
   
-  const mapDispatch = (dispatch) => {
+const mapDispatch = (dispatch) => {
     return {
-        getFruit: () => dispatch(fetchFruit()),
-        getVeggie: () => dispatch(fetchVeggie())
+        getProduct: () => dispatch(fetchProduct()),
     };
   };
   
   
-  export default connect(mapState, mapDispatch)(AllFruit);
+export default connect(mapState, mapDispatch)(AllProduct);

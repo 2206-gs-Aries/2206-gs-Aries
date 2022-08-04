@@ -12,10 +12,8 @@ export const Home = (props, isLoggedIn) => {
 
   return (
     <div> 
-
-    <AllProduct />
+      <AllProduct />
     </div>
-    
   )
 }
 

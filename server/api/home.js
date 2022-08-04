@@ -1,13 +1,23 @@
 const router = require('express').Router()
-const { models: { Fruit, Veggie }} = require('../db')
+const { models: { Product }} = require('../db')
 module.exports = router
 
+
+
 router.get('/', async (req, res, next) => {
-  try {
-    const fruits = await Fruit.findAll()
-    const veggies = await Veggie.findAll()
-    res.send({fruits, veggies})
-  } catch (err) {
-    next(err)
-  }
+    try {
+      let product = await Product.findAll()
+      res.send(product)
+    } catch (err) {
+      next(err)
+    }
+  })
+
+router.get('/:id', async (req, res, next) => {
+    try {
+        let product = await Product.findByPk(req.params.id)
+        res.send(product)
+    } catch (err) {
+        next(err)
+    }
 })

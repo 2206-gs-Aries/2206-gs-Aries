@@ -8,11 +8,12 @@ import {logout} from '../store'
 function Header (props) {
     return (
         <div className="header">
-            <img className="header_logo" src = "https://images-na.ssl-images-amazon.com/images/G/01/gc/designs/livepreview/amazon_dkblue_noto_email_v2016_us-main._CB468775337_.png"/>
-            
+            <Link to="/home"> <img className="header_logo" src = "https://images-na.ssl-images-amazon.com/images/G/01/gc/designs/livepreview/amazon_dkblue_noto_email_v2016_us-main._CB468775337_.png"/></Link>
             <div className="header_search">
-                <input className="header_searchInput" type="text"/>
+                <input className="header_searchInput" type="text" placeholder="Search" id="mysearch"/>
+        
                 <SearchIcon className='header_searchIcon'/>
+                <span className="clear" onClick={props.clearValue}></span>
             </div>
 
             <div className="header_nav">
@@ -26,18 +27,17 @@ function Header (props) {
                     <span className="header_optionLineTwo">& Order</span> 
                 </div>
 
-                {/* <div className="header_option">
-                    <span className="header_optionLineOne">Your</span> 
-                    <span className="header_optionLineTwo">Prime</span> 
-                </div> */}
-                
-                <div className="header_optionBasket">
-                    <ShoppingCartIcon />
-                    <span className="header_optionLineTwo header_backetCount">0</span> 
-                </div>
+                 <Link to="/checkout">
+                    <div className="header_optionBasket">
+                        <ShoppingCartIcon />
+                        <span className="header_optionLineTwo header_backetCount">0</span> 
+                    </div>
+                </Link>
+             </div>
 
-                <button href="#" onClick={props.handleClick} >Logout</button>
-            </div>
+             <div>
+                <button className="btn"href="#" onClick={props.handleClick} >Logout</button>
+             </div>
         </div>
     )
 }
@@ -53,6 +53,10 @@ const mapDispatch = dispatch => {
     return {
       handleClick() {
         dispatch(logout())
+      },
+      clearValue() {
+        const x = document.getElementById('mysearch')
+        x.value = ''
       }
     }
   }
