@@ -1,6 +1,6 @@
 'use strict'
 
-const {db, models: {User, Fruit, Veggie, Product} } = require('../server/db')
+const {db, models: {User, Product, Cart} } = require('../server/db')
 
 // const fruits = [
 //   {
@@ -150,11 +150,11 @@ async function seed() {
   //   })
   // )
 
-  // await Promise.all(
-  //   veggies.map((veggie) => {
-  //     return Veggie.create(veggie)
-  //   })
-  // )
+  await Promise.all(
+    products.map((veggie) => {
+      return Cart.create(veggie)
+    })
+  )
 
   await Promise.all(
     products.map((veggie) => {
