@@ -28,15 +28,27 @@ export class Product extends React.Component {
         </div>
 
         <img src={this.props.singleProduct.imageUrl} />
-        <button className="addCart"  onClick={()=>this.props.addToCart({name:this.props.singleProduct.name, imageUrl:this.props.singleProduct.imageUrl, description: this.props.singleProduct.description, price: this.props.singleProduct.price})}>Add to Cart</button>
+        <button
+          className="addCart"
+          onClick={() =>
+            this.props.addToCart({
+              name: this.props.singleProduct.name,
+              imageUrl: this.props.singleProduct.imageUrl,
+              description: this.props.singleProduct.description,
+              price: this.props.singleProduct.price,
+            })
+          }
+        >
+          Add to Cart
+        </button>
       </div>
     );
   }
 }
 
-const mapState = (start) => {
+const mapState = (state) => {
   return {
-    singleProduct: start.singleProduct,
+    singleProduct: state.singleProduct,
   };
 };
 
