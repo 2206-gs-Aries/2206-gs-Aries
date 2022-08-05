@@ -28,6 +28,9 @@ export const deleteCart = (id) => {
   }
 }
 
+export const getCartTotal = (cart) => 
+  cart?.reduce((amount, item) => item.price + amount, 0)
+
 
 export default function(state = [], action) {
     switch (action.type) {
