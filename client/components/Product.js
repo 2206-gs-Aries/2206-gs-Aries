@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchSingleProduct } from "../store/singleProduct";
+import { fetchCart } from "../store/cart";
 
 export class Product extends React.Component {
   componentDidMount() {
@@ -27,7 +28,7 @@ export class Product extends React.Component {
         </div>
 
         <img src={this.props.singleProduct.imageUrl} />
-        <button className="addCart">Add to Cart</button>
+        <button className="addCart"  onClick={()=>this.props.addToCart({name:this.props.singleProduct.name, imageUrl:this.props.singleProduct.imageUrl, description: this.props.singleProduct.description, price: this.props.singleProduct.price})}>Add to Cart</button>
       </div>
     );
   }
@@ -42,6 +43,7 @@ const mapState = (start) => {
 const mapDispatch = (dispatch) => {
   return {
     getProduct: (id) => dispatch(fetchSingleProduct(id)),
+    addToCart: (product) => dispatch(fetchCart(product)),
   };
 };
 

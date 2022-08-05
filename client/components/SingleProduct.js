@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { fetchCart } from "../store/cart";
+
 
 export class SingleProduct extends React.Component {
   render() {
@@ -15,10 +18,23 @@ export class SingleProduct extends React.Component {
         </div>
         <img src={this.props.imageUrl} />
 
-        <button className="addCart">Add to Cart</button>
+        <button className="addCart" onClick={()=>this.props.addToCart({name:this.props.name, imageUrl:this.props.imageUrl, description: this.props.description, price: this.props.price})}>Add to Cart</button>
       </div>
     );
   }
 }
 
-export default SingleProduct;
+const mapState = (start) => {
+  return {
+      cart: start.cart
+  };
+};
+
+const mapDispatch = (dispatch) => {
+  return {
+      addToCart: (product) => dispatch(fetchCart(product)),
+  };
+};
+
+
+export default connect(mapState, mapDispatch)(SingleProduct);

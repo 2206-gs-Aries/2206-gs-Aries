@@ -8,6 +8,7 @@ import SignInSide from './components/SignInSide'
 import SignUp from './components/Signup';
 import Checkout from './components/Checkout'
 import Product from './components/Product'
+import Payment from './components/Payment'
 /**
  * COMPONENT
  */
@@ -24,9 +25,10 @@ class Routes extends Component {
         {isLoggedIn ? (
           <Switch>
             <Route path="/home/:id" component={Product} />
+            <Route path='/payment' component={ Payment } />
             <Route path="/home" component={ Home } />
             <Route path="/checkout" component={ Checkout } />
-            <Redirect to="/home" />
+            <Redirect  to="/home" />
           </Switch>
         ) : (
           <Switch>

@@ -30,7 +30,7 @@ function Header (props) {
                  <Link to="/checkout">
                     <div className="header_optionBasket">
                         <ShoppingCartIcon />
-                        <span className="header_optionLineTwo header_backetCount">0</span> 
+                        <span className="header_optionLineTwo header_backetCount">{props.cart.length}</span> 
                     </div>
                 </Link>
              </div>
@@ -45,7 +45,8 @@ function Header (props) {
 const mapState = state => {
   return {
     username: state.auth.username,
-    isLoggedIn: !!state.auth.id
+    isLoggedIn: !!state.auth.id,
+    cart: state.cart
   }
 }
 

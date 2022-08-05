@@ -8,7 +8,7 @@ import Header from './Header'
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
    
-    <nav>
+    <nav className='sticky'>
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}

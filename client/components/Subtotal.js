@@ -1,6 +1,7 @@
 import React from "react";
 import CurrencyFormat from "react-currency-format";
-
+import history from '../history'
+import { connect } from "react-redux";
 export class Subtotal extends React.Component {
     render() {
         return (
@@ -9,7 +10,7 @@ export class Subtotal extends React.Component {
               renderText={(value) => (
                 <>
                   <p>
-                    Subtotal (0 items): <strong>0</strong>
+                    Subtotal ({this.props.carts.length}): <strong>0</strong>
                   </p>
                   <small className="subtotal__gift">
                     <input type="checkbox" /> This order contains a gift
@@ -23,10 +24,20 @@ export class Subtotal extends React.Component {
               prefix={"$"}
             />
       
-            <button>Proceed to Checkout</button>
+            <button onClick={e => history.push('/payment')}>Proceed to Checkout</button>
+            
           </div>
         )
     }
 }
 
-export default Subtotal
+const mapState = (start) => {
+  return {
+      carts: start.cart
+  };
+};
+
+
+
+export default connect(mapState)(Subtotal);
+
