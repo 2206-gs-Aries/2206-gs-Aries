@@ -4,6 +4,7 @@ import { fetchProduct } from "../store/product";
 import SingleProduct from './SingleProduct'
 
 
+
 export class AllProduct extends React.Component {
     componentDidMount() {
         this.props.getProduct()
@@ -14,11 +15,11 @@ export class AllProduct extends React.Component {
             <div className="home_container">  
                 
                 <h1>Welcome</h1>
-           
 
                 <div>
                     {this.props.products.map((product) => (
                         <SingleProduct { ...product } key={ product.id }/>
+                  
                     ))}
                 </div>
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Subtotal from './Subtotal'
+import { deleteCart } from "../store/cart";
 
 
 export class Checkout extends React.Component {
@@ -16,6 +17,17 @@ export class Checkout extends React.Component {
 
                 <div>
                     <h2 className="checkout_title">Your shopping Basket</h2>
+                    
+                    <div>
+                        {this.props.carts.map((cart) => (
+                            <div>
+                            <div>{cart.name}</div>
+                            <div>{cart.price}</div>
+                            <button onClick={()=>this.props.deleteProduct(cart.id)}>Remove from Cart</button>
+                            </div>
+                        ))}
+                    </div>
+
                 </div>
                 </div>
 
@@ -30,5 +42,18 @@ export class Checkout extends React.Component {
 
 
   
+const mapState = (start) => {
+    return {
+        carts: start.cart
+    };
+  };
+
+  const mapDispatch = (dispatch) => {
+    return {
+        deleteProduct: (id) => dispatch(deleteCart(id)),
+    };
+  };
   
-export default Checkout;
+
+  
+export default connect(mapState, mapDispatch)(Checkout);
