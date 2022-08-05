@@ -27,27 +27,25 @@ export class Payment extends React.Component {
                     <div className="payment_section">
                         <div className="payment_title">
                             <h3>Review items and delivery</h3>
-                            <div>
-                        {this.props.carts.map((cart) => (
-                            <div>
-                            <div>{cart.name}</div>
-                            <div>{cart.price}</div>
-                        
+                        </div>
+                            <div className="payment_items">
+                                {this.props.carts.map((cart) => (
+                                    <div>
+                                    <div>{cart.name}</div>
+                                    <div>{cart.price}</div>
+                                
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
-                        </div>
                     </div>
 
                     <div className="payment_section">
-                        <div className="payment_product">
-                         
-                        </div>
-                    </div>
-
-                    <div className="payment_section">
-                        <div className="payment_detail">
+                        <div className="payment_title">
                             <h3>Payment Method</h3>
+                        </div>
+
+                        <div className="payment_details">
+
                         </div>
                     </div>
                 </div>

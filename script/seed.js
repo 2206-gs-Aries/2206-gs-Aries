@@ -76,8 +76,8 @@ async function seed() {
   ])
 
   await Promise.all(
-    products.map((veggie) => {
-      return Product.create(veggie)
+    products.map((product) => {
+      return Product.create(product)
     })
   )
 

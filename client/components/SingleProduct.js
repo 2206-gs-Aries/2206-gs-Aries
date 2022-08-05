@@ -24,9 +24,9 @@ export class SingleProduct extends React.Component {
   }
 }
 
-const mapState = (start) => {
+const mapState = (state) => {
   return {
-      cart: start.cart
+      cart: state.cart
   };
 };
 
