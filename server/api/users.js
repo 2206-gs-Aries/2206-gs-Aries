@@ -15,3 +15,19 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+
+
+router.put('/:id', async (req, res, next) => {
+  try {
+    console.log(req.params.id)
+    const user = await User.findByPk(req.params.id);
+    res.send(await user.update(req.body));
+  } catch (error) {
+    if(error.name === 'SequelizeUniqueConstraintError') {
+      res.status(401).send('Email already exists')
+    } else {
+      next(error)
+    }
+  }
+});

@@ -20,6 +20,9 @@ const Cart = db.define("cart", {
     fruitOrVeggie: {
         type: Sequelize.STRING
     },
+    userId: {
+        type: Sequelize.INTEGER
+    }
 })
 
 module.exports = Cart

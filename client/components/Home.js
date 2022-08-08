@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import Header from './Header'
 import AllProduct from './AllProduct'
+import Searchbar from './Searchbar'
 
 
 /**
@@ -13,6 +14,7 @@ export const Home = (props, isLoggedIn) => {
   return (
     <div> 
       <AllProduct />
+
     </div>
   )
 }

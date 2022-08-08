@@ -1,15 +1,18 @@
 import React from "react";
 import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
+import { deleteCart } from "../store/usercart";
+import CheckoutProduct from "./CheckoutProduct";
+import Pay from './Pay'
 
 
-export class Payment extends React.Component {
-    render() {
+
+function Payment (props) {
         return (
             <div className="payment">
                 <div className="payment_container">
                     <h1>
-                        Checkout
+                        Checkout ({props.carts.length} items)
                     </h1>
                     <div className="payment_section">
 
@@ -18,9 +21,9 @@ export class Payment extends React.Component {
                         </div>
 
                         <div className="payment_address">   
-                            <p>{this.props.username}</p>
-                            <p>email address</p>
-                            <p>1212 s emerald Los angeies, CA</p>
+                            <p><small>name:</small> <strong>{ props.username }</strong></p>
+                            <p><small>email address:</small>  <strong>{ props.email }</strong></p>
+                            <p><small>shipping address:</small>  <strong>{ props.address }</strong></p>
                         </div>
                     </div>
 
@@ -29,12 +32,10 @@ export class Payment extends React.Component {
                             <h3>Review items and delivery</h3>
                         </div>
                             <div className="payment_items">
-                                {this.props.carts.map((cart) => (
+                                {props.carts.map((cart) => (
                                     <div>
-                                    <div>{cart.name}</div>
-                                    <div>{cart.price}</div>
-                                
-                                    </div>
+                                  <CheckoutProduct {...cart} key={cart.id} />
+                                  </div>
                                 ))}
                             </div>
                     </div>
@@ -45,21 +46,29 @@ export class Payment extends React.Component {
                         </div>
 
                         <div className="payment_details">
-
+                                <Pay />
                         </div>
                     </div>
                 </div>
             </div>
         )
     }
-}
+
 const mapState = state => {
     return {
       username: state.auth.username,
+      email: state.auth.email,
+      address: state.auth.address,
       isLoggedIn: !!state.auth.id,
-      carts: state.cart
+      carts: state.usercart
     }
   }
 
+  const mapDispatch = (dispatch) => {
+    return {
+        deleteProduct: (id) => dispatch(deleteCart(id)),
+    };
+  };
 
-export default connect(mapState)(Payment)
+
+export default connect(mapState, mapDispatch)(Payment)

@@ -30,6 +30,8 @@ router.post('/', async (req, res, next) => {
   }
 })
 
+
+
 router.delete('/:id', async (req, res, next) => {
   try {
     const product = await Cart.findByPk(req.params.id)
@@ -39,4 +41,5 @@ router.delete('/:id', async (req, res, next) => {
     next(err)
   }
 })
+
 

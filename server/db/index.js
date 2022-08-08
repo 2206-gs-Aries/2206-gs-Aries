@@ -7,8 +7,12 @@ const Product = require('./models/Product')
 const Cart = require('./models/Cart')
 const Order = require('./models/Order')
 
+
 //associations could go here!
 
+
+Cart.belongsTo(User)
+User.hasOne(Cart)
 
 
 module.exports = {
