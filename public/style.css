@@ -60,6 +60,8 @@ form div {
   padding: 10px;
   border: none;
   width: 100%;
+  margin-bottom: 20px;
+  margin-right: 30px;
 }
 
 .btn {
