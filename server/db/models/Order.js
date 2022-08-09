@@ -2,30 +2,17 @@ const Sequelize = require('sequelize');
 const db = require('../db');
 const Order = db.define('order', {
   name: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
+    type: Sequelize.STRING
   },
-  email: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      isEmail: true,
-      notEmpty: true,
-    },
+  quantity: {
+    type: Sequelize.INTEGER
   },
-  address: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
-  },
-  status: {
-    type: Sequelize.ENUM('open', 'closed'),
-    allowNull: false,
-  },
+price: {
+    type: Sequelize.FLOAT,
+},
+//   status: {
+//     type: Sequelize.ENUM('open', 'closed'),
+//     allowNull: false,
+//   },
 });
 module.exports = Order;

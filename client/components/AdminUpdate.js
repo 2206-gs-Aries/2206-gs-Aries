@@ -50,7 +50,7 @@ class AdminUpdate extends Component {
      <input name="name" onChange= { this.handleChange } value= { this.state.name } />
 
 
-     <button type= "submit">Submit</button>
+     <button type= "submit" className="admin_button">Submit</button>
      <Link to='/admin'>back</Link>
     
    </form> 

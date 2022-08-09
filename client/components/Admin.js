@@ -31,7 +31,7 @@ export class Admin extends React.Component {
                   >
                     remove
                   </button>
-                  <button
+                  <button  id="button-13"
                    onClick={e => history.push(`/admin/update/${product.id}`)}
                   >
                     Update

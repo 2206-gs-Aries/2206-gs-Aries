@@ -24,17 +24,17 @@ export class Checkout extends React.Component {
                 <div className="checkout_left">
                     <img className="checkout_img"src="http://natural-food.asia/wp-content/uploads/2021/07/26.jpg" />
 
-                {/* <div>
+                <div>
                     <h2 className="checkout_title">Your shopping Basket</h2>
                     
-                    <div>
+                    {/* <div>
                         {this.props.carts.map((cart) => (
                             <div>
                             <CheckoutProduct {...cart} key={cart.id} />
                             </div>   
                         ))}
-                    </div>
-                </div> */}
+                    </div> */}
+                </div>
 
                 <table width="100%">
                     <thead>
@@ -47,8 +47,15 @@ export class Checkout extends React.Component {
                             <td>Subtotal</td>
                         </tr>
                     </thead>
-                    <tbody>
+                    {/* <tbody>
                             {this.props.carts.map((cart) => (
+                            
+                            <Basket {...cart} key={cart.id} />
+                             
+                        ))}
+                    </tbody> */}
+                    <tbody>
+                            {this.props.cartz.map((cart) => (
                             
                             <Basket {...cart} key={cart.id} />
                              
@@ -74,6 +81,7 @@ const mapState = (state) => {
     return {
         carts: state.usercart,
         id: state.auth.id,
+        cartz: state.cart,
     };
   };
 

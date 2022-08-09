@@ -22,7 +22,7 @@ export class SingleProduct extends React.Component {
         </div>
         <img src={this.props.imageUrl} />
 
-        <button className="addCart" onClick={()=>{this.props.addToCart({name:this.props.name, imageUrl:this.props.imageUrl, description: this.props.description, price: this.props.price, userId: this.props.userid}); this.props.userCart(this.props.userid)}}>Add to Cart</button>
+        <button className="addCart" onClick={()=>{this.props.addToCart({name:this.props.name, imageUrl:this.props.imageUrl, description: this.props.description, price: this.props.price, userId: this.props.userid,}); this.props.userCart(this.props.userid)}}>Add to Cart</button>
     
       </div>
     );
