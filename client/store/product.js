@@ -2,7 +2,7 @@ import axios from 'axios'
 
 
 const SET_PRODUCT = 'SET_PRODUCT'
-
+const UPDATE_PRODUCT = 'UPDATE_PRODUCT'
 
 /**
  * ACTION CREATORS
@@ -12,6 +12,10 @@ export const setProduct = (product) => ({
     product
 })
 
+export const update_Product = (product) => ({
+  type: UPDATE_PRODUCT,
+  product
+})
 
 /**
  * THUNK CREATORS
@@ -23,6 +27,13 @@ export const fetchProduct = () => {
         const { data: product } = await axios.get('/api/home')
         dispatch(setProduct(product))
     }
+}
+
+export const updateProduct = (product) => {
+  return async(dispatch) => {
+    const { data: update } = await axios.put(`/api/admin/update/${product.id}`, product)
+    dispatch(update_Product(update))
+  }
 }
 
 

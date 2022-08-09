@@ -17,10 +17,9 @@ router.get('/', async (req, res, next) => {
 })
 
 
-
 router.put('/:id', async (req, res, next) => {
   try {
-    console.log(req.params.id)
+  
     const user = await User.findByPk(req.params.id);
     res.send(await user.update(req.body));
   } catch (error) {
@@ -31,3 +30,4 @@ router.put('/:id', async (req, res, next) => {
     }
   }
 });
+

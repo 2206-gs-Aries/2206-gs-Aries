@@ -13,9 +13,21 @@ export const user_Cart = (product) => ({
     product
   })
   
-  export const userCart = (id) => {
+//   export const userCart = (id) => {
+//     return async (dispatch) => {
+//         const { data: product } = await axios.get(`/api/checkout/${ id }`)
+//         dispatch(user_Cart(product))
+//     }
+//   }
+
+  export const userCart = () => {
     return async (dispatch) => {
-        const { data: product } = await axios.get(`/api/checkout/${ id }`)
+        const token = window.localStorage.getItem('token')
+        const { data: product } = await axios.get(`/api/checkout/`, {
+            headers: {
+                authorization: token
+            }
+        })
         dispatch(user_Cart(product))
     }
   }
@@ -27,6 +39,8 @@ export const user_Cart = (product) => ({
         dispatch(setDelete(product))
     }
   }
+
+
 
   export default function(state = [], action) {
     switch (action.type) {

@@ -6,7 +6,7 @@ import StripeCheckout from "react-stripe-checkout";
 export class Pay extends React.Component {
     render() {
         const onToken = (token) => {
-            console.log(token)
+
         }
         return (
             <div className="pay">

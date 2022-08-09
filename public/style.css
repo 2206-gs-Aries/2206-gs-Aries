@@ -155,8 +155,30 @@ form div {
   max-height: 400px;
   min-width: 100px;
   background-color: white;
-  z-index: 1
+  z-index: 1;
+  border-radius:10px 100px /120px;
+  background:rgb(190, 245, 180);
+
+  
 } */
+
+.product1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 10px;
+  padding: 20px;
+  width: 100%;
+  max-height: 400px;
+  min-width: 100px;
+  background-color: white;
+  z-index: 1;
+  border-radius:10px 100px /120px;
+  background:rgb(190, 245, 180);
+
+  
+}
 
 .product {
 width:23%;
@@ -202,6 +224,15 @@ transition: 0.2s ease;
   margin-bottom: 15px;
 }
 
+.product_info1 {
+  width: 30%;
+  height: 100px;
+  margin-bottom: 15px;
+}
+.productImg{
+  display: flex;
+  margin-right: 60%;
+}
 .clear {
 
   top: 50%;
@@ -441,3 +472,35 @@ transition: 0.2s ease;
 a:hover{
   background-color: lightgray;
 }
+
+.single_product {
+  display: flex;
+  margin-top: 5%;
+  background-color: white;
+padding-bottom: 5%;
+}
+
+.single_product .MainImg{
+
+  width: 40%;
+  margin-right: 50px;
+}
+
+.MainImg{
+  width: 100%;
+  max-height: 200px;
+  margin-top: 25px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.product_button {
+    background-color: #f0c14b;
+    border: 1px solid;
+    margin-top: 10px;
+    border-color: #a88734 #9c7e31 #846a29;
+    color: #111;
+    border:1px solid #cce7d0;
+}
+
+

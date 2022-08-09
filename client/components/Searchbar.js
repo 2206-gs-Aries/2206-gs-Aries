@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
 import {connect} from 'react-redux'
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import SearchIcon from '@mui/icons-material/Search';
-import CloseIcon from '@mui/icons-material/Close';
 
 function Searchbar(props) {
     const [filteredData, setFilteredData] = useState([])

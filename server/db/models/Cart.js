@@ -25,4 +25,19 @@ const Cart = db.define("cart", {
     }
 })
 
+Cart.findByToken = async function(token) {
+    try {
+      const {id} = await jwt.verify(token, process.env.JWT)
+      const user = Cart.findByPk(id)
+      if (!user) {
+        throw 'nooo'
+      }
+      return user
+    } catch (ex) {
+      const error = Error('bad token')
+      error.status = 401
+      throw error
+    }
+  }
+
 module.exports = Cart
