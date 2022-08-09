@@ -84,6 +84,9 @@ const theme = createTheme();
     <Grid item>
                   <Link href = "/signup" variant="body2">
                     {"Don't have an account? Sign Up"}
+                  </Link> <br />
+                  <Link href = "/Home" variant="body2">
+                    {"Continue shopping As a guest"}
                   </Link>
                 </Grid>
     <Copyright sx={{ mt: 5 }} />

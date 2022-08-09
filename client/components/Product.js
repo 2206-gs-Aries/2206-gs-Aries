@@ -18,24 +18,43 @@ export class Product extends React.Component {
   render() {
     return (
     //   <div className="product">
-    //   <div className="product_info">
-    //       <div className="nameQtyAndDescription">
-    //           <h1>{this.props.singleProduct.name}</h1>
-              
-    //           {/* <h3>Quantity: {this.props.singleProduct.quantity}</h3> */}
-              
-    //           {this.props.singleProduct.description}
-    //       </div>
+    //     <div className="product_info">
+    //         <div className="nameQtyAndDescription">
+    //             <h1>{this.props.singleProduct.name}</h1>
+                
+    //             {/* <h3>Quantity: {this.props.singleProduct.quantity}</h3> */}
+                
+    //             {this.props.singleProduct.description}
+    //         </div>
 
-    //     <p className="product_price">
-    //       <small>Price: $</small>
-    //       <strong>{this.props.singleProduct.price}</strong>
-    //     </p>
+    //       <p className="product_price">
+    //         <small>Price: $</small>
+    //         <strong>{this.props.singleProduct.price}</strong>
+    //       </p>
+    //     </div>
+
+    //     <img src={this.props.singleProduct.imageUrl} className='productImg'/>
+    //     <button className="addCart"  onClick={()=>this.props.addToCart({name:this.props.singleProduct.name, imageUrl:this.props.singleProduct.imageUrl, description: this.props.singleProduct.description, price: this.props.singleProduct.price})}>Add to Cart</button>
     //   </div>
+    // //   <div className="product">
+    // //   <div className="product_info">
+    // //       <div className="nameQtyAndDescription">
+    // //           <h1>{this.props.singleProduct.name}</h1>
+              
+    // //           {/* <h3>Quantity: {this.props.singleProduct.quantity}</h3> */}
+              
+    // //           {this.props.singleProduct.description}
+    // //       </div>
 
-    //   <img src={this.props.singleProduct.imageUrl} className='productImg'/>
-    //   <button className="addCart"  onClick={()=>this.props.addToCart({name:this.props.singleProduct.name, imageUrl:this.props.singleProduct.imageUrl, description: this.props.singleProduct.description, price: this.props.singleProduct.price})}>Add to Cart</button>
-    // </div>
+    // //     <p className="product_price">
+    // //       <small>Price: $</small>
+    // //       <strong>{this.props.singleProduct.price}</strong>
+    // //     </p>
+    // //   </div>
+
+    // //   <img src={this.props.singleProduct.imageUrl} className='productImg'/>
+    // //   <button className="addCart"  onClick={()=>this.props.addToCart({name:this.props.singleProduct.name, imageUrl:this.props.singleProduct.imageUrl, description: this.props.singleProduct.description, price: this.props.singleProduct.price})}>Add to Cart</button>
+    // // </div>
           <section className="single_product">
             <img src={this.props.singleProduct.imageUrl} className='MainImg'/>
             <div className="single_pro_details">

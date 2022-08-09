@@ -22,13 +22,24 @@ export const user_Cart = (product) => ({
 
   export const userCart = () => {
     return async (dispatch) => {
+
         const token = window.localStorage.getItem('token')
+        if(token){
         const { data: product } = await axios.get(`/api/checkout/`, {
             headers: {
                 authorization: token
             }
         })
         dispatch(user_Cart(product))
+      } else{
+        // function addProduct(){
+          let products = JSON.parse(localStorage.getItem('products'))||[];
+        //   console.log(products)
+        //   products.push({'productId' : product.Id });
+        //   localStorage.setItem('products', JSON.stringify(products));
+        // }
+        dispatch(user_Cart(products))
+      }
     }
   }
 
