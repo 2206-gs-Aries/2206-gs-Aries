@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { models: { User, Cart }} = require('../db')
+const { models: { User, Cart, Order }} = require('../db')
 module.exports = router
 
 
@@ -34,14 +34,52 @@ router.get('/',  async (req, res, next) => {
     }
   })
 
-  router.delete('/:id', async (req, res, next) => {
+//   router.delete('/:id', async (req, res, next) => {
+//     try {
+//       const product = await Cart.findByPk(req.params.id)
+      
+//       if (product === null) {
+//         id = req.params.id
+//         const product1 = await Order.findByPk(id)
+//         await product1.destroy()
+        
+//       } else {
+//     const name = product.dataValues.name
+//     const userId = product.dataValues.userId
+//     const data = await Cart.findAll({
+//       where: {
+//           name: name,
+//           userId: userId,
+//       }
+//     })
+//       await data.map((x) => (
+//         x.destroy()
+//       ))
+//       res.send(data)}
+//     } catch(err) {
+//       next(err)
+//     }
+//   })
+
+
+router.delete('/:id', async (req, res, next) => {
     try {
-      const product = await Cart.findByPk(req.params.id)
-      await product.destroy()
+      const order = await Order.findByPk(req.params.id)
+      const name = order.dataValues.name
+      const userId = order.dataValues.userId
+      let product = await Cart.findAll({where:{
+        name: name,
+        userId: userId
+      }})
+      await order.destroy()
+      await product.map((x) => (
+        x.destroy()
+      ))
       res.send(product)
     } catch(err) {
       next(err)
     }
   })
+
 
   

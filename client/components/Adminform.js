@@ -79,7 +79,7 @@ class Adminform extends React.Component {
 const mapDispatchToProps = (dispatch) => ({
 
   addToCart: (product) => dispatch(createAProduct(product)),
-  getProduct: (id) => dispatch(fetchSingleProduct(id)),
+
 });
 
 export default connect(null, mapDispatchToProps)(Adminform);

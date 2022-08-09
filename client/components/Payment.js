@@ -46,7 +46,7 @@ function Payment (props) {
                         </div>
 
                         <div className="payment_details">
-                                <Pay />
+                                <Pay {...props.carts}/>
                         </div>
                     </div>
                 </div>

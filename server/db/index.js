@@ -13,6 +13,14 @@ const Order = require('./models/Order')
 
 Cart.belongsTo(User)
 User.hasOne(Cart)
+User.hasMany(Order)
+
+Cart.hasOne(Order)
+Order.belongsTo(User)
+
+Order.hasMany(Product)
+
+
 
 
 module.exports = {

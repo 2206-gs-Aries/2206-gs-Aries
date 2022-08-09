@@ -35,7 +35,8 @@ export class Subtotal extends React.Component {
 
 const mapState = (state) => {
   return {
-      carts: state.usercart
+      carts: state.usercart,
+      cart: state.cart
   };
 };
 
