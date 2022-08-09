@@ -60,6 +60,30 @@ const products = [
     price: 0.5,
     fruitOrVeggie: "veggie"
   },
+  {
+    name: "Orange",
+    description:
+      "Strawberries are soft, sweet, bright red berries. They're also delicious. Strawberries have tiny edible seeds, which grow all over their surface. When ripe, strawberries smell wonderful and taste even better. You can make jam, pie, strawberry shortcake, and more with strawberries.",
+    quantity: 30,
+    price: 1.5,
+    fruitOrVeggie: "fruit"
+  },
+  {
+    name: "coriander",
+    description:
+      "Cucumber is a summer vegetable, with elongate shape and 15cm long. Its skin is of a green colour, turning into yellow in maturation. At present, it is found in the European markets all over the year. Fresh or pickled cucumbers are also available.",
+    quantity: 42,
+    price: 0.75,
+    fruitOrVeggie: "veggie"
+  },
+  {
+    name: "ginger",
+    description:
+      "Cucumber is a summer vegetable, with elongate shape and 15cm long. Its skin is of a green colour, turning into yellow in maturation. At present, it is found in the European markets all over the year. Fresh or pickled cucumbers are also available.",
+    quantity: 42,
+    price: 0.75,
+    fruitOrVeggie: "veggie"
+  },
 ];
 /**
  * seed - this function clears the database, updates tables to

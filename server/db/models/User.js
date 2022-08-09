@@ -3,6 +3,7 @@ const db = require('../db')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
 const axios = require('axios');
+const { SignalCellularNullOutlined } = require('@mui/icons-material');
 
 const SALT_ROUNDS = 5;
 
@@ -14,6 +15,21 @@ const User = db.define('user', {
   },
   password: {
     type: Sequelize.STRING,
+    require: true
+  },
+  email: {
+    type: Sequelize.STRING,
+    unique: true,
+    validate: {
+      isEmail: true
+    },
+  },
+  address: {
+    type: Sequelize.STRING,
+  },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 

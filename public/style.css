@@ -21,6 +21,10 @@ form div {
   display: inline-block;
 }
 
+.home{
+  margin-top: 5%;
+}
+
 .header {
   height: 60px;
   display: flex;
@@ -140,7 +144,7 @@ form div {
 
 
 
-.product {
+/* .product {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -151,20 +155,63 @@ form div {
   max-height: 400px;
   min-width: 100px;
   background-color: white;
-  z-index: 1
+  z-index: 1;
+  border-radius:10px 100px /120px;
+  background:rgb(190, 245, 180);
+
+  
+} */
+
+.product1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 10px;
+  padding: 20px;
+  width: 100%;
+  max-height: 400px;
+  min-width: 100px;
+  background-color: white;
+  z-index: 1;
+  border-radius:10px 100px /120px;
+  background:rgb(190, 245, 180);
+
+  
 }
+
+.product {
+width:23%;
+min-width: 250px;
+padding: 10px 12px;
+border: 1px solid #cce7d0;
+background-color: white;
+border-radius: 25px;
+cursor: pointer;
+box-shadow: 20px 20px 30px rgba(0,0,0,0.02);
+margin: 15px 0;
+transition: 0.2s ease;
+}
+
 .addCart {
+  margin-left: 33%;
   background-color: #f0c14b;
   border: 1px solid;
   margin-top: 10px;
   border-color: #a88734 #9c7e31 #846a29;
-  color: #111
+  color: #111;
+  border:1px solid #cce7d0;
 }
 .product > img {
   max-height: 200px;
   width: 100%;
   object-fit: contain;
   margin-bottom: 15px;
+}
+
+.fOrv{
+  color: #606063;
+  font-size: 12px;
 }
 
 .product_price{
@@ -177,6 +224,15 @@ form div {
   margin-bottom: 15px;
 }
 
+.product_info1 {
+  width: 30%;
+  height: 100px;
+  margin-bottom: 15px;
+}
+.productImg{
+  display: flex;
+  margin-right: 60%;
+}
 .clear {
 
   top: 50%;
@@ -261,6 +317,7 @@ form div {
 
 .payment {
   background-color: white;
+  margin-top: 3%;
 }
 
 .payment_container > h1 {
@@ -286,9 +343,11 @@ form div {
   flex: 0.2;
 }
 
-.payment_address{
+.payment_address, .payment_items{
   flex: 0.8;
 }
+
+
 
 .check_img {
   max-height: 200px;
@@ -329,3 +388,119 @@ form div {
   width: 180px;
   height: 180px;
 }
+
+.allProduct{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  flex-wrap: wrap;
+}
+
+
+.pay_button{
+  border-radius: 4px;
+  background-color: #5ca1e1;
+  border: none;
+  color: #fff;
+  text-align: center;
+  font-size: 22px;
+  padding: 10px;
+  width: 120px;
+  transition: all 0.5s;
+  cursor: pointer;
+ 
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+
+.pay_button{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.pay_button:after  {
+  content: '»';
+  position: absolute;
+  opacity: 0;  
+  top: 14px;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.pay_button:hover{
+  padding-right: 24px;
+  padding-left:8px;
+}
+
+.pay_button:hover:after {
+  opacity: 1;
+  right: 10px;
+}
+
+.profile{
+  margin-top: 5%;
+}
+
+.m{
+  color: white;
+  margin-top: 8%;
+}
+
+.dataResult{
+  margin-top: 5px;
+  width: 300px;
+  height: 200px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.dataResult .dataItem{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  color: black;
+}
+
+.dataItem p{
+  margin-left: 10px;
+}
+
+a:hover{
+  background-color: lightgray;
+}
+
+.single_product {
+  display: flex;
+  margin-top: 5%;
+  background-color: white;
+padding-bottom: 5%;
+}
+
+.single_product .MainImg{
+
+  width: 40%;
+  margin-right: 50px;
+}
+
+.MainImg{
+  width: 100%;
+  max-height: 200px;
+  margin-top: 25px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.product_button {
+    background-color: #f0c14b;
+    border: 1px solid;
+    margin-top: 10px;
+    border-color: #a88734 #9c7e31 #846a29;
+    color: #111;
+    border:1px solid #cce7d0;
+}
+
+

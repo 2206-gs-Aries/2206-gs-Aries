@@ -4,16 +4,19 @@ import {Link} from 'react-router-dom'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
 import {logout} from '../store'
+import Searchbar from './Searchbar';
 
 function Header (props) {
+  
     return (
         <div className="header">
             <Link to="/home"> <img className="header_logo" src = "https://images-na.ssl-images-amazon.com/images/G/01/gc/designs/livepreview/amazon_dkblue_noto_email_v2016_us-main._CB468775337_.png"/></Link>
             <div className="header_search">
-                <input className="header_searchInput" type="text" placeholder="Search" id="mysearch"/>
+                {/* <input className="header_searchInput" type="text" placeholder="Search" id="mysearch"/>
         
-                <SearchIcon className='header_searchIcon'/>
-                <span className="clear" onClick={props.clearValue}></span>
+                <SearchIcon className='header_searchIcon'/> */}
+                <Searchbar />
+                {/* <span className="clear" onClick={props.clearValue}></span> */}
             </div>
 
             <div className="header_nav">
@@ -23,14 +26,15 @@ function Header (props) {
                 </div>
 
                 <div className="header_option">
-                    <span className="header_optionLineOne">Return</span> 
-                    <span className="header_optionLineTwo">& Order</span> 
+                    {/* <span className="header_optionLineOne">View</span>  */}
+                    {/* <span className="header_optionLineTwo">& Profile</span>  */}
+                    <span className="header_optionLineTwo"><Link className='m'to={`/users/${props.id}`}>profile</Link></span> 
                 </div>
 
-                 <Link to="/checkout">
+                 <Link to={`/checkout/${props.id}`}>
                     <div className="header_optionBasket">
                         <ShoppingCartIcon />
-                        <span className="header_optionLineTwo header_backetCount">{props.cart.length}</span> 
+                        <span className="header_optionLineTwo header_backetCount">{props.usercart.length}</span> 
                     </div>
                 </Link>
              </div>
@@ -45,8 +49,10 @@ function Header (props) {
 const mapState = state => {
   return {
     username: state.auth.username,
+    id: state.auth.id,
     isLoggedIn: !!state.auth.id,
-    cart: state.cart
+    cart: state.usercart,
+    usercart: state.usercart
   }
 }
 

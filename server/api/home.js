@@ -24,11 +24,14 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
+  
     res.send(await Cart.create(req.body))
   } catch(err) {
     next(err)
   }
 })
+
+
 
 router.delete('/:id', async (req, res, next) => {
   try {
@@ -39,4 +42,5 @@ router.delete('/:id', async (req, res, next) => {
     next(err)
   }
 })
+
 

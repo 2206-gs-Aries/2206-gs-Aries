@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { deleteCart } from "../store/cart";
+import { deleteCart } from "../store/usercart";
 
 
 
@@ -19,7 +19,7 @@ export class CheckoutProduct extends React.Component {
                 <small>$</small>
                 <strong>{ this.props.price }</strong>
             </p>
-            
+
             <div>
                 <button className="checkoutProduct_delete"onClick={()=>this.props.deleteProduct(this.props.id)}>Remove from Cart</button>
             </div>

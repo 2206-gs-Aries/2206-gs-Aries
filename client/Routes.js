@@ -9,6 +9,10 @@ import SignUp from './components/Signup';
 import Checkout from './components/Checkout'
 import Product from './components/Product'
 import Payment from './components/Payment'
+import Pay from './components/Pay'
+import Profile from './components/Profile'
+import Admin from "./components/Admin";
+import AdminUpdate from './components/AdminUpdate';
 /**
  * COMPONENT
  */
@@ -24,15 +28,19 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
+            <Route exact path="/admin/update/:id" component={AdminUpdate} />
+            <Route path="/admin" component={Admin} />
+  
             <Route path="/home/:id" component={Product} />
-            <Route path='/payment' component={ Payment } />
+            <Route path='/payment' component={ Payment }/>
             <Route path="/home" component={ Home } />
-            <Route path="/checkout" component={ Checkout } />
+            <Route path="/pay" component={ Pay } />
+            <Route path='/users/:id' component={ Profile} />
+            <Route path="/checkout/:id" component={ Checkout } />
             <Redirect  to="/home" />
           </Switch>
         ) : (
           <Switch>
-           
             <Route path='/' exact component={ SignInSide } />
             <Route path="/login" component={Login} />
             <Route path="/signin" component={ SignInSide } />
