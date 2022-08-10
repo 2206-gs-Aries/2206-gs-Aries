@@ -9,7 +9,9 @@ const Order = db.define('order', {
   },
 price: {
     type: Sequelize.FLOAT,
-},
+},imageUrl: {
+    type: Sequelize.TEXT,
+}
 //   status: {
 //     type: Sequelize.ENUM('open', 'closed'),
 //     allowNull: false,

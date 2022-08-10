@@ -5,12 +5,12 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
 import {logout} from '../store'
 import Searchbar from './Searchbar';
-
+import { getCartNum } from "../store/cart";
 function Header (props) {
   
     return (
         <div className="header">
-            <Link to="/home"> <img className="header_logo" src = "https://images-na.ssl-images-amazon.com/images/G/01/gc/designs/livepreview/amazon_dkblue_noto_email_v2016_us-main._CB468775337_.png"/></Link>
+            <Link to="/home"> <img className="header_logo" src = 'https://t4.ftcdn.net/jpg/02/74/75/35/360_F_274753587_VAYE9MdL6d2t2ALgAb60GHIwEOUROQck.jpg'/></Link>
             <div className="header_search">
                 {/* <input className="header_searchInput" type="text" placeholder="Search" id="mysearch"/>
         
@@ -34,7 +34,7 @@ function Header (props) {
                  <Link to={`/checkout/${props.id}`}>
                     <div className="header_optionBasket">
                         <ShoppingCartIcon />
-                        <span className="header_optionLineTwo header_backetCount">{props.usercart.length}</span> 
+                        <span className="header_optionLineTwo header_backetCount">{props.getTotalNum(props.usercart)}</span> 
                     </div>
                 </Link>
              </div>
@@ -58,6 +58,7 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
     return {
+      getTotalNum: (cart) => getCartNum(cart),
       handleClick() {
         dispatch(logout())
       },

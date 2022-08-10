@@ -1,10 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import { deleteCart } from "../store/usercart";
-
+import { userCart } from  "../store/usercart";
 
 
 export class CheckoutProduct extends React.Component {
+
+    componentDidMount() {
+        this.props.userCart(this.props.id)
+    }
   render() {
     return (
      <div className="checkoutProduct">
@@ -16,8 +20,15 @@ export class CheckoutProduct extends React.Component {
             </p>
 
             <p className="checkoutProduct_price">
-                <small>$</small>
-                <strong>{ this.props.price }</strong>
+                Price: <small>$</small><strong>{ this.props.price }</strong>
+            </p>
+
+            <p className="checkoutProduct_price">
+            Quantity: <strong>{ this.props.quantity }</strong>
+            </p>
+
+            <p className="checkoutProduct_price">
+            Subtotal: <small>$</small> <strong>{ this.props.price  *   this.props.quantity  }</strong> 
             </p>
 
             <div>
@@ -34,6 +45,7 @@ export class CheckoutProduct extends React.Component {
 const mapDispatch = (dispatch) => {
     return {
         deleteProduct: (id) => dispatch(deleteCart(id)),
+        userCart: (id) => dispatch(userCart(id))
     };
   };
 

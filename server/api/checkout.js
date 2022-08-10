@@ -14,11 +14,13 @@ const requireToken = async (req, res, next) => {
     }
   };
 
-// router.get('/:id',  async (req, res, next) => {
-//     try {
 
-//       let user = await Cart.findAll( {where:{userId: req.params.id}})
-//       res.send(user)
+
+// router.get('/',  async (req, res, next) => {
+//     try {
+//       let user = await User.findByToken(req.headers.authorization) 
+//       let product = await Cart.findAll( {where:{userId: user.id}})
+//       res.send(product)
 //     } catch (err) {
 //       next(err)
 //     }
@@ -27,39 +29,21 @@ const requireToken = async (req, res, next) => {
 router.get('/',  async (req, res, next) => {
     try {
       let user = await User.findByToken(req.headers.authorization) 
-      let product = await Cart.findAll( {where:{userId: user.id}})
+      let product = await Order.findAll( {where:{userId: user.id}})
       res.send(product)
     } catch (err) {
       next(err)
     }
   })
 
-//   router.delete('/:id', async (req, res, next) => {
-//     try {
-//       const product = await Cart.findByPk(req.params.id)
-      
-//       if (product === null) {
-//         id = req.params.id
-//         const product1 = await Order.findByPk(id)
-//         await product1.destroy()
-        
-//       } else {
-//     const name = product.dataValues.name
-//     const userId = product.dataValues.userId
-//     const data = await Cart.findAll({
-//       where: {
-//           name: name,
-//           userId: userId,
-//       }
-//     })
-//       await data.map((x) => (
-//         x.destroy()
-//       ))
-//       res.send(data)}
-//     } catch(err) {
-//       next(err)
-//     }
-//   })
+router.put('/', async (req, res, next) => {
+    try {
+        const order = await Order.findByPk(req.params.id)
+        console.log(req.params)
+    }catch (err) {
+        res.send(err)
+    }
+})
 
 
 router.delete('/:id', async (req, res, next) => {
@@ -72,6 +56,7 @@ router.delete('/:id', async (req, res, next) => {
         userId: userId
       }})
       await order.destroy()
+      res.send(order)
       await product.map((x) => (
         x.destroy()
       ))

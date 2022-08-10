@@ -25,7 +25,7 @@ const products = [
   },
   {
     name: "Banana",
-
+    imageUrl:'https://images.immediate.co.uk/production/volatile/sites/30/2017/01/Bananas-218094b-scaled.jpg',
     description:
       "A banana is a curved, yellow fruit with a thick skin and soft sweet flesh. If you eat a banana every day for breakfast, your roommate might nickname you 'the monkey.' A banana is a tropical fruit that's quite popular all over the world. It grows in bunches on a banana tree.",
     quantity: 25,
@@ -62,6 +62,7 @@ const products = [
   },
   {
     name: "Orange",
+    imageUrl: 'https://www.santosfood.com/wp-content/uploads/2020/01/img-7.jpg',
     description:
       "Strawberries are soft, sweet, bright red berries. They're also delicious. Strawberries have tiny edible seeds, which grow all over their surface. When ripe, strawberries smell wonderful and taste even better. You can make jam, pie, strawberry shortcake, and more with strawberries.",
     quantity: 30,
@@ -70,6 +71,7 @@ const products = [
   },
   {
     name: "coriander",
+    imageUrl:'https://www.veggycation.com.au/siteassets/veggycationvegetable/coriander-leaves.jpg',
     description:
       "Cucumber is a summer vegetable, with elongate shape and 15cm long. Its skin is of a green colour, turning into yellow in maturation. At present, it is found in the European markets all over the year. Fresh or pickled cucumbers are also available.",
     quantity: 42,
@@ -78,6 +80,7 @@ const products = [
   },
   {
     name: "ginger",
+    imageUrl:'https://images.immediate.co.uk/production/volatile/sites/30/2013/06/ginger-80e324d-scaled.jpg',
     description:
       "Cucumber is a summer vegetable, with elongate shape and 15cm long. Its skin is of a green colour, turning into yellow in maturation. At present, it is found in the European markets all over the year. Fresh or pickled cucumbers are also available.",
     quantity: 42,
