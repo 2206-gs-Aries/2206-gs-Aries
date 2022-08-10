@@ -55,7 +55,7 @@ export class Checkout extends React.Component {
                         ))}
                     </tbody> */}
                     <tbody>
-                            {this.props.cartz.map((cart) => (
+                            {this.props.carts.map((cart) => (
                             
                             <Basket {...cart} key={cart.id} />
                              

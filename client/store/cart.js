@@ -3,6 +3,8 @@ import { StaticRouter } from "react-router-dom";
 
 const SET_CART = "SET_CART";
 
+
+
 export const setCart = (product) => ({
   type: SET_CART,
   product,
@@ -24,7 +26,10 @@ export const fetchCart = (product) => {
 };
 
 export const getCartTotal = (cart) =>
-  cart?.reduce((amount, item) => item.price + amount, 0);
+  cart?.reduce((amount, item) => item.price * item.quantity + amount, 0);
+
+  export const getCartNum = (cart) =>
+  cart?.reduce((amount, item) => item.quantity + amount, 0);
 
 export default function (state = [], action) {
   switch (action.type) {

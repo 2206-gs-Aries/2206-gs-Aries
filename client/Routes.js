@@ -51,6 +51,8 @@ class Routes extends Component {
             <Route path='/payment' component={ Payment }/>
             <Route path="/pay" component={ Pay } />
             <Route path='/users/:id' component={ Profile} />
+            <Route path='/admin' component={Admin} />
+
           </Switch>
         )}
       </div>

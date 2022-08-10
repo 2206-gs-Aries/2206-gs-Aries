@@ -34,7 +34,8 @@ router.post('/', async (req, res, next) => {
         name: req.body.name,
         quantity: 1,
         userId: req.body.userId,
-        price: req.body.price
+        price: req.body.price,
+        imageUrl: req.body.imageUrl
       })
       res.send(newOrder)
     } else {

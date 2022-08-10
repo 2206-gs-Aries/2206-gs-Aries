@@ -3,6 +3,7 @@ import CurrencyFormat from "react-currency-format";
 import history from '../history'
 import { connect } from "react-redux";
 import { getCartTotal } from "../store/cart";
+import { getCartNum } from "../store/cart";
 
 export class Subtotal extends React.Component {
     render() {
@@ -12,7 +13,7 @@ export class Subtotal extends React.Component {
               renderText={(value) => (
                 <>
                   <p>
-                    Subtotal ({this.props.carts.length} items): <strong>{ value }</strong>
+                    Subtotal ({this.props.getTotalNum(this.props.carts)} items): <strong>{ value }</strong>
                   </p>
                   <small className="subtotal__gift">
                     <input type="checkbox" /> This order contains a gift
@@ -42,7 +43,8 @@ const mapState = (state) => {
 
 const mapDispatch = () => {
   return {
-      getTotal: (cart) => getCartTotal(cart)
+      getTotal: (cart) => getCartTotal(cart),
+      getTotalNum: (cart) => getCartNum(cart),
   };
 };
 

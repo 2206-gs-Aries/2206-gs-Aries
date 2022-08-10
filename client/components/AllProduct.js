@@ -16,7 +16,6 @@ export class AllProduct extends React.Component {
         <div className="home">
             <div className="home_container">  
                 
-                <h1>Welcome</h1>
 
                 <div className="allProduct">
                     {this.props.products.map((product) => (
